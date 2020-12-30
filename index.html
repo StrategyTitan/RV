@@ -1,0 +1,1074 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+        <title>“Strategy Titan’s Top RV Retail Growth MSA’s”</title>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+        <style>
+
+
+            body {
+                font-family:            'Montserrat', sans-serif;
+                margin:                 0;
+                padding:                0;
+                background-color:     #155068;
+                width:                  100%;
+            }
+
+            .centered {
+                text-align:             center;
+            }
+
+            html {
+                /* height:                 100%; */
+            }
+
+            #buttons {
+                display:                none;
+                position:               relative;
+                top:                    295px;
+                width:                  100%;
+            }
+
+            #buttons button {
+                position:               fixed;
+                width:                  120px;
+                height:                 40px;
+                background:           #FFFFFF;
+                font-size:              1em;
+                font-weight:            700;
+            }
+
+            #backbutton {
+                left:                   25px;
+            }
+
+            #nextbutton {
+                right:                  25px;
+            }
+
+            .card-title {
+                font-size:              2em;
+                text-align:             center;
+                font-weight:            700;
+                line-height:            1.2em;
+            }
+
+            .card-stats {
+                text-transform:         uppercase;
+            }
+
+            #container1 {
+                text-transform:         uppercase;
+            }
+
+            #container5 {
+                text-transform:         uppercase;
+            }
+
+            #map {
+                height:                 100%;
+                position:               fixed;
+                width:                  calc(100% - 450px);
+            }
+
+            #features {
+                background-color:     #155068;
+                color:                #FFFFFF;  
+                float:                  right;
+                width:                  450px;
+            }
+
+            ul {
+                margin-block-start:     0.5em;
+                margin-block-end:       0.5em;
+            }
+
+            .inline-stat {
+                font-weight:            bold;
+            }
+
+            #USA-title {
+                font-size: 2.2em; 
+                line-height: 1.2em; 
+                font-weight: 700; 
+                text-align: center; 
+                margin-top: 0.5em;
+            }
+
+            #intro-modal {
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                background: rgb(255,255,255,.75);
+                z-index: 10000;
+                font-size: 1em;
+                line-height: 1.5em;
+                color: whitesmoke;
+            }
+
+            #intro-modal #close {
+                width:                  120px;
+                height:                 40px;
+                background:           #FFFFFF;
+                font-size:              1em;
+                font-weight:            700;
+                cursor:                 pointer;        
+            }
+
+            #modal {
+                top: 200px;
+                margin: auto;
+                width: 400px;
+                background: #155068;
+                position: relative;
+                opacity: 0.9;
+                border-radius: 10px;
+                padding: 20px;
+            }
+
+            #key {
+                position:               fixed;
+                z-index:                100;
+                width:                  150px;
+                bottom:                 70px;
+                left:                   10px;
+                padding:                3px;
+                background:           white;
+                border:                 1px solid black;
+            }
+
+            #logo {
+                height:                 27px;
+            }
+
+            section {
+                font-size:              13px;
+                line-height:            20px;
+                margin:                 40px 25px;
+                opacity:                0.25;
+            }
+
+            section.active {
+                opacity:                1;
+            }
+
+            section:last-child {
+                border-bottom:          none;
+                height:                 calc(100vh + 5px);
+            }
+
+            .section-container {
+                margin-top:             1.5em;
+            }
+
+            #section-content {
+                height: auto;
+            }
+
+            .stat {
+                font-weight:            700;
+                margin-left:            1em;
+            }
+
+            .stats {
+                font-size:              1.1em;
+            }
+
+            .text {
+                font-weight:            400;
+                font-size:              1.1em;
+            }
+
+            a:visited {
+                color: #fffffe;
+            }
+
+            a:link {
+                color: #fffffe;
+            }
+
+
+            /*****************/
+            /* MEDIA QUERIES */
+            /*****************/
+            @media screen and (max-width: 900px) {
+                section {
+                    width:              auto;
+                    display:            inline-block;
+                    margin:             0px 20px !important;
+                }
+
+                section:last-child {
+                    height:             auto;
+                }
+
+                #section-content {
+                    height:             220px;
+                    overflow-y:         scroll;
+                }
+
+                hr {
+                    display:            none;
+                }
+
+                #buttons {
+                    display:            inline-block;
+                }
+
+                .card-title {
+                    line-height:        1.0em;
+                    font-size:          1.8em;
+                }
+
+                .desktop {
+                    display:            none;
+                }
+
+                #features {
+                    position:           fixed;
+                    top:                350px;
+                    width:              100%;
+                    height:             350px;
+                    overflow-y:         scroll;
+                }
+
+                #intro-modal {
+                    visibility:         hidden;
+                }
+
+                #logo {
+                    display:            none;
+                }
+
+                #key {
+                    position:           fixed;
+                    /* z-index:            100; */
+                    width:              90px;
+                    left:               5px;
+                    top:                215px;
+                    display:            none;
+                }
+
+                #map {
+                    position:           fixed;
+                    width:              100%;
+                    height:             350px;
+                }
+
+                #USA-title {
+                    margin-top:   0px;
+                    font-size:    1.8em;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Intro Modal -->
+        <div id="intro-modal">
+            <div id="modal">
+                <div id="content">  
+                    This is an interactive map.  Scroll down through the city
+                    cards to the right side of the map and the map will fly
+                    to the city's location.          
+                </div>
+                <div style="text-align: center; padding-top: 10px;">
+                    <button id="close">Let's Go!</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- Side Panel -->
+        <div id="features">
+
+            <!-- Nav buttons -->
+            <div id="buttons">
+                <button id="backbutton" disabled>PREVIOUS</button>
+                <button id="nextbutton" disabled>NEXT</button>
+            </div>
+
+            <!-- (1) USA -->
+            <section id="USA" class="active" style="margin-top: 25px;">
+                <div style="width: 100%; text-align: right;">
+                    <img id="logo" src="https://www.strategytitan.com/files/theme/images/strategy-titan-logo-white.png"/>  
+                </div>
+                <div id="USA-title">Top 10 RV MSA’s</div>
+                <div style="margin-top: 1em; text-align: center; text-transform: uppercase; font-size: 1.1em">DATA THRU OCTOBER 2020</div>
+                <div style="margin-top: 1em; text-align: center; font-size: 1.0em">
+                        <strong>Source:</strong>&nbsp;SSI
+                        <div style="margin-top: 0.5rem">
+                            Rankings are based on CBSA/MSA level rolling 12 month unit growth figures vs the prior 12 months. </div>
+                         <div>   
+                            Each MSA is shaded based on their rolling 12 month unit growth rate %. All unit and revenue commentary is based on unit placement data.
+                        </div>
+                        <div style="margin-top: 0.5rem">  
+                            <b>Growth Period:</b> November 2019 to October 2020  
+                        </div> 
+                        <div style="margin-top: 0.1rem">
+                            <b>Baseline Period:</b> November 2018 to October 2019
+                        </div>                        
+                        <div style="margin-top: 0.5rem">
+                            Get our 2021 RV retail forecast or request a complimentary dealership market share analysis <a href="https://www.strategytitan.com/rv.html" target="_blank"><b><u>here</u></b></a>.   
+                        
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size:medium; text-align: center;">
+                        <br>
+                        <br>
+                            <b><u>Executive Summary</u></b> 
+                        </div>
+                        <div style="margin-top: 0rem">
+                            Large markets have continued to perform well, but there are some smaller markets experiencing exceptionally strong growth. Significant dealer and brand/model share shifts has been taking place in many markets across the country. Mid sized retailers have continued to take unit and revenue share in many markets.<br><br>If you are looking for insights into what may be popular and/or might fall out of flavor in your market, you want to watch the Dallas market trends, specifically as it relates to consumer interests by product category and model/brand popularity. It is interesting to note that trends we see unfolding in this market tend to serve as leading indicators for what unfolds in other markets across the US.
+                        </div>                        
+                </div> 
+                <!-- <div style="margin-top: 1.5em; text-align: center; font-size: 1.1em">
+                    Each circle represents a cluster of manufacturing jobs, orange represents city area
+                </div> -->
+            </section>
+
+            <!-- HR -->
+            <hr>
+        </div>
+
+        <!-- Map -->
+        <div id="map"></div>
+
+        <!-- Key -->
+        <img id="key" src="./key.png">
+            <!-- <div>
+                <span style="color: mediumseagreen;">&#9724;&#xFE0E;</span>
+                <span>Positive unit growth vs. YTD prior year</span>
+            </div>
+            <div>
+                <span style="color: lightpink;">&#9724;&#xFE0E;</span>
+                <span>Negative unit growth vs. YTD prior year</span>
+                
+            </div> -->
+        </img>
+
+        <!-- JS Script -->
+        <script>
+            // MapboxGL Code.
+            mapboxgl.accessToken =  "pk.eyJ1IjoiZGFzLWRvbWluYXRvciIsImEiOiJjaWdwcHlhOGEwMTk3dTZtMTFoOWlhODRuIn0.EMMUXq7iUiiTGYicBf_3DQ";
+            var map =               new mapboxgl.Map({
+                                        antialias:              true,
+                                        attributionControl:     false,
+                                        center:                 [-98.579,39.828],
+                                        container:              "map",
+                                        interactive:            false,
+                                        pitch:                  0,
+                                        scrollZoom:             false,
+                                        style:                  "mapbox://styles/das-dominator/ckepunapv1uvk19ldk4w51khw",
+                                        touchZoomRotate:        false,
+                                        zoom:                   3.25,
+                                    });
+            var fillLayer1 = "cb-2018-17-place-500k-il-3b21gj"
+            var fillLayer2 = "usrvretailjuly2020-4curt3"
+            var lineLayer = "may-2020-yoy-growth-dmu1ab copy-MSA Outlines";
+
+            // Animation interval.
+            var interval;
+
+            // Media queries.
+            var media = window.matchMedia("(max-width: 900px)").matches ? "mobile" : "desktop";
+
+            // Quick hits.
+            document.querySelector("#USA-title").innerText = 
+                media === "desktop" ? 
+                "Top 10 RV Retail Unit Growth MSA's" :
+                "Top 10 RV Retail Unit Growth MSA's" ;
+
+            // Close modal.
+            document.querySelector("#close").addEventListener("click", function() {
+                document.querySelector("#intro-modal").style.visibility = "hidden";
+            });
+
+            // Data and settings.
+            var cities = {
+                "USA": {
+                    camera: {
+                        center:     [-98.579,39.828],
+                        zoom:       3.25,
+                        pitch:      0,
+                    },
+                    bounds:         [[-126.960, 24.394],[-65.117, 50.034]],
+                    data:           {},
+                },
+                "Los Angeles-Long Beach-Anaheim, CA": {
+                    camera: {
+                        duration:   3000,
+                        center:     [-118.2437, 34.0522],
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.45886934944271,41.83153694271266],[-88.17601395569697,42.009466044631495]],
+                    data:   {
+                        CBSA:                   31080,
+                        cityJobsInManufPerc:    22,
+                        description:            "LA growth has been driven by impressive and sustained expansion in the travel trailer (+16.7%, 16th fastest growing market nationally) and fifth wheel (+10.6%, 6th fastest growth nationally) segments. This market experienced expansion during the June to August period that was among the largest in the country on a percentage basis.<br><br>Two dealers took significant revenue share from the rest of the market, driven by exceptionally strong sales $ growth in the class C, fifth wheel, and travel trailer categories.<br><br>Two newer Class B models have been displaying extremely impressive local revenue share growth. Local dealers need to understand how changing local market demand and dynamics are driving share shift across models and dealers.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   10,
+                        title:                  "Los Angeles-Long Beach-Anaheim, CA",
+                        natlUnitVolRank:        7,
+                        percOfAllIlManufJobs:   0.9,
+                        ytdUnitGrowth:          15,
+                        unemploymentYOY:        -1.5,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 16.7 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 10.6 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 33.8 },
+                                                    { 'segment': 'Class A', ytdGrowth: -0.6 },
+                                                    { 'segment': 'Class B', ytdGrowth: 17.5 },
+                                                    { 'segment': 'Class C', ytdGrowth: 20.7 },
+                                                ],
+                    },
+                }, 
+                "Minneapolis-St. Paul-Bloomington, MN-WI": {
+                    camera: {
+                        duration:   3000,
+                        center:     [-93.455, 45.247],
+                        zoom:       7,
+                        pitch:      0
+                    },
+                    bounds: [[-88.0148821816433,41.9716237524313],[-87.79681747866573,42.10853922124801]],
+                    data:   {
+                        CBSA:                   33460,
+                        cityJobsInManufPerc:    12,
+                        description:            "Market growth has been fueled by both the travel trailer (+12.8%, 8th fastest growing market nationally) and park model (+26.5%, fastest growing market) segments. The Class B % growth of +62.5% made it the 26th fastest growing market in that category.<br><br>There was solid growth among a majority of travel trailer brands sold in this region, but three specific models displayed far above average growth. Each of these models were in the top 20 travel trailer models sold within this market, had over 120% growth, and have a combined 4.2% of the total local market revenue share. <br><br>The largest of these 3 models took a full point of share in the past 12 months and has outstanding momentum heading into 2021.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   9,
+                        title:                  "Minneapolis-St. Paul-Bloomington, MN-WI",
+                        natlUnitVolRank:         4,
+                        percOfAllIlManufJobs:   0.9,
+                        ytdUnitGrowth:          12,
+                        unemploymentYOY:        -0.8,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 12.8 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 2.5 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 6.5 },
+                                                    { 'segment': 'Park Model', ytdGrowth: 26.5 },
+                                                    { 'segment': 'Class A', ytdGrowth: 5.8 },
+                                                    { 'segment': 'Class B', ytdGrowth: 62.5 },
+                                                    { 'segment': 'Class C', ytdGrowth: 19.3 },
+                                                ],
+                    },
+                },
+                "Lake Charles, LA": {
+                    camera: {
+                        duration:   3000,
+                        center:     [-93.217 ,30.226],
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds: [[-89.1428595314028,42.26312400979279],[-88.91433891788361,42.40593763325427]],
+                    data:   {
+                        CBSA:                   29340,
+                        cityJobsInManufPerc:    37,
+                        description:            "Growth over the past 12 months has been immense, cracking the top 10 in unit growth despite being outside the top 60 largest RV retail markets (based on unit sales).<br><br>This unit growth is being driven by explosive increases in travel trailer (+280.9%, 6th fastest growing market nationally) and Fifth Wheel (134.9%, making it the #1 growth market).<br><br>To give a sense of the magnitude of travel trailer growth, the top 10 models in this market combined for just over 100 units in the base period and had over 350 units sold during the growth period. Even more impressive, the growth was evenly spread across the top 10 models, with triple digit % growth for almost all the top 10 models.<br><br>From a dealer perspective, this is a unique market because many of the larger dealerships gave up sizeable amounts of market share to mid sized dealers, resulting in millions of dollars of revenue share shift over the past 12 months. Larger players in this market may need to modify their sales, inventory, and marketing strategies in 2021 to gain back their lost share and revenue.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   8,
+                        title:                  "Lake Charles, LA",
+                        natlUnitVolRank:        69,
+                        percOfAllIlManufJobs:   0.9,
+                        ytdUnitGrowth:          201,
+                        unemploymentYOY:        -0.6,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 280.9 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 134.9 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: -50 },
+                                                    { 'segment': 'Class A', ytdGrowth: -33.3 },
+                                                    { 'segment': 'Class B', ytdGrowth: 50 },
+                                                    { 'segment': 'Class C', ytdGrowth: 0 },
+                                                ],
+                    },
+                },
+                "Austin-Round Rock, TX": {
+                    camera: {
+                        duration:   3000,  
+                        center:     [-97.611 ,30.123],
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-87.97080592080049,41.88680749240217],[-87.80990411759872,41.98799541679355]],
+                    data:   {
+                        CBSA:                   12420,
+                        cityJobsInManufPerc:    35,
+                        description:            "+30.6% unit growth makes this the 5th fastest growing travel trailer market in the US. Their strong unit growth in Class C (+47.8%) placed them as the 8th fastest growing market. It was also one of the few markets that has seen strong Class A expansion (+20.6%, 5th fastest growing market).<br><br>This market has had significant travel trailer brand/model share shift over the past 12 months. The previous top two models held 12% unit market share during the base period. Over the past 12 months that share has decreased to 9.4%. Most of the resulting share gain for other models has been spread evenly.<br><br>From a dealer perspective, the two largest unit market share holders had a combined 31% share during the base period. Over the past 12 months their combined share decreased to ~28%, with two mid sized dealers taking a large portion of their market, gaining over 1 point of share each. This share shift represented a few million dollars in revenue over the past 12 months.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   7,
+                        title:                  "Austin-Round Rock, TX",
+                        natlUnitVolRank:        16,
+                        percOfAllIlManufJobs:   0.9,
+                        ytdUnitGrowth:          26,
+                        unemploymentYOY:        -0.8,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 30.6 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 3.6 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 66.7 },
+                                                    { 'segment': 'Class A', ytdGrowth: 20.6 },
+                                                    { 'segment': 'Class B', ytdGrowth: 50.0 },
+                                                    { 'segment': 'Class C', ytdGrowth: 47.8 },
+                                                ],
+                    },
+                },
+                "Atlanta-Sandy Springs-Roswell, GA": {
+                    camera: {
+                        center:     [-83.901 ,33.566],
+                        duration:   3000,  
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.99836196028839,42.18453962076265],[-88.75542110273162,42.33654363209712]],
+                    data:   {
+                        CBSA:                   12060,
+                        cityJobsInManufPerc:    50,
+                        description:            "ATL was off to a slow start in 2020 prior to the pandemic, but it experienced extremely significant growth starting in June 2020. That explosive upward growth trend has held through October 2020, placing it as one of the fastest growing markets over the past 6 months.<br><br>ATL’s growth is being driven primarily by travel trailers, with segment units being up 24.4% in the most recent 12 months vs the prior 12 months. This makes it the 4th fastest growing travel trailer market in the US. Fifth wheel unit sales are up 13.1% (4th in the nation) and Class B is up 37.5% (29th in the US). Fifth wheel sales have significantly picked up in June & July vs prior years. <br><br>Small and mid sized dealers are dominating this market, taking significant share from their larger competition. The top 6 dealer share leaders from the base period all lost market share (4 points total) over the past 12 months. The next 5 largest dealers gained 2 points of unit share. <br><br>The remaining 2 points of share were spread evenly across the rest of the market. With one point of share in this market representing millions of dollars, these share shifts are having sizeable impacts on dealer top line revenue growth across the local market.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   6,
+                        title:                  "Atlanta-Sandy Springs-Roswell, GA",
+                        natlUnitVolRank:        10,
+                        percOfAllIlManufJobs:   1.0,
+                        ytdUnitGrowth:          20,
+                        unemploymentYOY:        -0.6,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 24.4 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 13.1 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 19 },
+                                                    { 'segment': 'Class A', ytdGrowth: -4.6 },
+                                                    { 'segment': 'Class B', ytdGrowth: 37.5 },
+                                                    { 'segment': 'Class C', ytdGrowth: 4.1 },
+                                                ],
+                    },
+                },
+                "Salt Lake City, UT": {
+                    camera: {
+                        center:     [-113.120, 40.448],
+                        duration:   3000,  
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.11226920308711,42.21632389912716],[-87.94414853275721,42.32150025437724]],
+                    data:   {
+                        CBSA:                   41620,
+                        cityJobsInManufPerc:    45,
+                        description:            "The Salt Lake City RV retail market has numerous bright spots: The travel trailer segment is up 37.2% (7th largest growth market in the US), fifth wheel is up 20.7% (3rd largest growth nationally), and camping trailers are up 68.8% (#1 growing market in the country).<br><br>This market has had profound dealer market share shifts over the past 12 months, making it one of the most active share shift markets in the US. Three mid sized dealers are taking unit market share at an extremely rapid and sustained rate. There is also a cohort of smaller dealers that experienced profound growth and gained share. Finally, there was a new dealer that came into the market and quickly grabbed a point of share.<br><br>While the top 10 travel trailer models in this market essentially remained the same, the share movement between them was sizeable. Two of the top 10 models lost a point of share each and two others gained a point each. The top 5 models in the fifth wheel category gained almost two points of total unit market share.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   5,
+                        title:                  "Salt Lake City, UT",
+                        natlUnitVolRank:        19,
+                        percOfAllIlManufJobs:   1.1,
+                        ytdUnitGrowth:          33,
+                        unemploymentYOY:        -1.4,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 37.2 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 20.7 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 68.8 },
+                                                    { 'segment': 'Class A', ytdGrowth: -7.9 },
+                                                    { 'segment': 'Class B', ytdGrowth: 62.1 },
+                                                    { 'segment': 'Class C', ytdGrowth: 30.2 },
+                                                ],
+                    }
+                },
+                "Miami-Fort Lauderdale-West Palm Beach, FL": {
+                    camera: {
+                        center:     [-80.094 ,26.110],
+                        duration:   3000,  
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.47939605150454,41.660143493444934],[-88.16032636659827,41.861354698045034]],
+                    data:   {
+                        CBSA:                   33100,
+                        cityJobsInManufPerc:    10,
+                        description:            "The mix of Miami’s growth is impressive. While travel trailer units are up 34.1% vs the prior 12 months (14th fastest growing market in the US), it is the unit growth in Class C that is very impressive, being up 57% over last year. This makes it the largest growing MSA for Class C unit sales. Class A (+22%, #1 growing market nationally) and Class B (114%, #2 growth market) are also performing exceptionally well in this MSA.<br><br>Taking a revenue perspective, Class B and C have been the major revenue drivers for the market (total market revenue is up 45% over the past 12 months). During the base period Class B and C had combined revenue in this market equal to 75% of the total Class A sales over the same time period.<br><br>Over the past 12 months Class B and C had 105% of Class A revenue sales, reflecting just how profound the growth in these categories has been. This market is an example of a broader growth trend we are seeing with Class B and C nationally.<br><br>Almost all Class B & C models grew in this market over the past 12 months. New models (those with no sales during the base period) accounted for $6.5M+ in sales over the past 12 months, making this a great market for other areas to study and understand what in the Class B & C categories is resonating with customers.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   4,
+                        title:                  "Miami-Fort Lauderdale-West Palm Beach, FL",
+                        natlUnitVolRank:        21,
+                        percOfAllIlManufJobs:   1.1,
+                        ytdUnitGrowth:          38,
+                        unemploymentYOY:        -1.5,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 34.1 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 14.8 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 33.3 },
+                                                    { 'segment': 'Class A', ytdGrowth: 34.2 },
+                                                    { 'segment': 'Class B', ytdGrowth: 91.8 },
+                                                    { 'segment': 'Class C', ytdGrowth: 74.3 },
+                                                ],
+                    }
+                },
+                "Houston-The Woodlands-Sugar Land, TX": {
+                    camera: {
+                        center:     [-95.634, 29.619],
+                        duration:   3000,  
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.10260506798483,41.873225960571204],[-87.91384681910492,41.99194119853061]],
+                    data:   {
+                        CBSA:                   26420,
+                        cityJobsInManufPerc:    26,
+                        description:            "One of the largest travel trailer and fifth wheel markets in the country has delivered exceptionally strong performance for a while now. The past 12 months in travel trailer have been significant, with this market being up +17.4% (3rd largest unit growth market in the US). Class C revenue growth (+10%) has also outpaced unit growth (+4%), putting it in the top 15 nationally for growth in both units and $’s.<br><br>This is a big market being supported by a lot of dealers. 5 of those dealers control over 50% of Houston new RV sales $’s. All 5 of those dealers lost revenue market share in the past 12 months, with a lot of the share going to dealers with new RV sales revenue in the $5M to $25M range. A sizeable new dealership also came in and took a solid 4-5 points of share in the past 12 months.<br><br>All of this makes Houston one of the most active dealer share shift markets in the US. It is also a solid bellwether for broader trends unfolding in markets across the US.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   3,
+                        title:                  "Houston-The Woodlands-Sugar Land, TX",
+                        natlUnitVolRank:        2,
+                        percOfAllIlManufJobs:   1.2,
+                        ytdUnitGrowth:          13,
+                        unemploymentYOY:        -0.6,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 17.4 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 0.8 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 15.2 },
+                                                    { 'segment': 'Class A', ytdGrowth: -0.9 },
+                                                    { 'segment': 'Class B', ytdGrowth: 38.2 },
+                                                    { 'segment': 'Class C', ytdGrowth: 11.7 },
+                                                ],
+                    }
+                },
+                "Sacramento--Roseville--Arden-Arcade, CA": {
+                    camera: {
+                        center:     [-120.884, 38.531],
+                        duration:   3000,
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-87.99973839197324,42.08388020377595],[-87.85689209967741,42.17344346973107]],
+                    data:   {
+                        CBSA:                   40900,
+                        cityJobsInManufPerc:    29,
+                        description:            "Sacramento has been punching far above its weight over the past 12 months. While it is a top new RV sales market, its explosive growth in the travel trailer segment (+63.1%, 2nd largest growing travel trailer market nationally) has been its growth engine.<br><br>This impressive growth is being driven by unique sales events that took place in the early summer. These events resulted in over 1,000 travel trailers being sold in one month. This was more than double the next closest MSA and represented a monthly unit high water mark for any MSA in the past 2 years. This performance is unlikely to repeat in 2021.<br><br>From a model perspective this market is a major anomaly, with the top 10 travel trailer models all having triple digit unit sales and triple digit growth %’s. These 10 brands held 45% of the total local market unit share, 25% of total revenue share. The leading model in this market tripled its revenue and unit market share, finishing the year with double digit unit market share.<br><br>While many dealers in this area experienced unit growth, virtually all of them lost significant market share to a small group of dealers that drove over 95% of total travel trailer unit growth.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   2,
+                        title:                  "Sacramento--Roseville--Arden-Arcade, CA",
+                        natlUnitVolRank:        11,
+                        percOfAllIlManufJobs:   1.2,
+                        ytdUnitGrowth:          36,
+                        unemploymentYOY:        -0.8,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 63.1 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: -9.3 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: -14 },
+                                                    { 'segment': 'Class A', ytdGrowth: -13.9 },
+                                                    { 'segment': 'Class B', ytdGrowth: 4.6 },
+                                                    { 'segment': 'Class C', ytdGrowth: -17.3 },
+                                                ],
+                    }
+                },
+                "Dallas-Fort Worth-Arlington, TX": {
+                    camera: {
+                        center:     [-96.843 ,32.625],
+                        duration:   3000,  
+                        zoom:       7,
+                        pitch:      0,
+                    },
+                    bounds:         [[-88.49188578798586,41.94925207944803],[-88.21142583886355,42.12535104938149]],
+                    data:   {
+                        CBSA:                   19100,
+                        cityJobsInManufPerc:    14,
+                        description:            "While this market is the undisputed king of travel trailers and fifth wheels based on size, it has also proven to be a top growth market from both a unit and % perspective. Travel trailer units are up +27.5% (#1 unit growth market nationally), fifth wheels are up +6.8% (2nd largest growth nationally), and Class C is up +30% (3rd fastest growing market nationally for this product category).<br><br>The major outlier here is Class A which is down -1.1%. As this is the 4th largest Class A market in the nation, this is a trend to pay attention to locally, regionally, and nationally as this category has been facing headwinds for a while now.<br><br>The historical top selling models in this market gained significant unit and revenue share at the expense of historically less popular models. It is interesting to note that trends we see unfolding in this market tend to serve as leading indicators for what unfolds in other markets across the US.<br><br>If you are looking for insights into what may be popular and/or might fall out of flavor in your market, you want to watch the Dallas market trends, specifically as it relates to consumer interests by product category and model/brand popularity.<br><br>On the dealer front this market saw a lot of revenue share shift. With this market being so large, gaining sizeable amounts of share is a difficult proposition, but many mid sized dealers did exactly that. The share they took came from many of the larger dealers in the area. Dealers in the $10M to $30M of new RV sales range (mid sized dealers for this market) have had an exceptionally fruitful past 12 months, taking a bulk of the share shift in this market.",
+                        mayorQuote:             "--Mayor Quote Here--",
+                        rank:                   1,
+                        title:                  "Dallas-Fort Worth-Arlington, TX",
+                        natlUnitVolRank:        1,
+                        percOfAllIlManufJobs:   1.4,
+                        ytdUnitGrowth:          22,
+                        unemploymentYOY:        -1.5,
+                        topSegments:            [
+                                                    { 'segment': 'Travel Trailer', ytdGrowth: 27.5 },
+                                                    { 'segment': 'Fifth Wheel', ytdGrowth: 6.8 },
+                                                    { 'segment': 'Camping Trailer', ytdGrowth: 46.4 },
+                                                    { 'segment': 'Class A', ytdGrowth: -1.1 },
+                                                    { 'segment': 'Class B', ytdGrowth: 55.9 },
+                                                    { 'segment': 'Class C', ytdGrowth: 30 },
+                                                ],
+                    }
+                },
+                "About": {
+                    camera: {
+                        center:     [-98.579,39.828],
+                        zoom:       3.25,
+                        pitch:      0,
+                        duration:   3000,
+                    },
+                    bounds:         [[-126.960, 24.394],[-65.117, 50.034]],
+                    data:   {
+                        title:              "About Strategy Titan",
+                        description:        "Our value proposition: We are a strategy and analytics firm that brings retail forecasting, strategic analytics, and market intelligence capabilities to the RV market to enhance strategic planning. Our goal is to help companies drive greater revenue, margins, and market share.<br><br>Head to <a href='https://www.strategytitan.com/rv.html' target='_blank'><b><u>www.StrategyTitan.com/rv</u></b></a> to:<br><br>•	Get our complimentary 2021 US RV retail forecast<br><br>•	Get your complimentary local dealer market share package (where available, US only)<br><br>•	Listen to Phil Ingrassia, President of the RV Dealers Association, describe how we can help dealers win in their markets and plan better<br><br>•	Learn how our local market RV retail forecasts can help you better manage inventory, plan better, and win more in 2021.<br><br>Looking for custom local market RV retail research to help you win more? ? <a href='mailto:contact@strategytitan.com'><b>Contact us</b>.</a> We would love to help make 2021 your best year ever.",
+                        descriptionMobile:  "Our value proposition: We are a strategy and analytics firm that brings retail forecasting, strategic analytics, and market intelligence capabilities to the RV market to enhance strategic planning. Our goal is to help companies drive greater revenue, margins, and market share.<br><br>Head to <a href='https://www.strategytitan.com/rv.html' target='_blank'><b><u>www.StrategyTitan.com/rv</u></b></a> to:<br><br>•	Get our complimentary 2021 US RV retail forecast<br><br>•	Get your complimentary local dealer market share package (where available, US only)<br><br>•	Listen to Phil Ingrassia, President of the RV Dealers Association, describe how we can help dealers win in their markets and plan better<br><br>•	Learn how our local market RV retail forecasts can help you better manage inventory, plan better, and win more in 2021.<br><br>Looking for custom local market RV retail research to help you win more? ? <a href='mailto:contact@strategytitan.com'><b>Contact us</b>.</a> We would love to help make 2021 your best year ever.",
+
+                    },
+                },
+            };
+
+            // Filter and sort cards by rank.
+            var sortedCities = Object.keys(cities).filter(function(city) {
+                    return city !== "USA" && city !== "About";
+                }).sort(function(a,b) {
+                    return cities[b].data.rank - cities[a].data.rank;
+                });
+
+            // Get ref to the features element.
+            var featuresDiv = document.getElementById("features");
+            var titleDiv = document.getElementById("USA");
+
+            // Function that builds a card.
+            function appendCard(parentDiv, cityData) {
+                // Div for the section.
+                var section = document.createElement("section");
+                section.id = cityData.title;
+                section.classList.add("nontitle");
+
+                // Title.
+                var titleDiv = document.createElement("div");
+                titleDiv.classList.add("card-title");
+                titleDiv.innerHTML = "#" + cityData.rank + ": " + cityData.title;
+                section.appendChild(titleDiv);
+
+                // Content container.
+                var sectionContentDiv = document.createElement("div");
+                sectionContentDiv.id = "section-content";
+
+                // Manufacturing jobs and Unemployment Data.
+                var container1 = document.createElement("div");
+                container1.id = "container1";
+                container1.classList.add("section-container");
+                container1.classList.add("stats");
+                var natlUnitVolRankDiv = document.createElement("div");
+                natlUnitVolRankDiv.classList.add("card-stats");
+                natlUnitVolRankDiv.innerHTML = "National Unit Volume Rank: <span class=\"stat\">" + cityData.natlUnitVolRank.toLocaleString() + "</span>";
+                container1.appendChild(natlUnitVolRankDiv);
+                var ytdUnitGrowthDiv = document.createElement("div");
+                ytdUnitGrowthDiv.innerHTML =  "Rolling 12 month unit growth vs prior 12 months: <span class=\"stat\">" + cityData.ytdUnitGrowth + "%";
+                container1.appendChild(ytdUnitGrowthDiv);
+                sectionContentDiv.appendChild(container1);
+
+                // City description.
+                var container2 = document.createElement("div");
+                container2.classList.add("section-container");
+                container2.classList.add("text");
+                // container2.classList.add("desktop");
+                var descriptionDiv = document.createElement("div");
+                descriptionDiv.innerHTML = cityData.description;
+                container2.appendChild(descriptionDiv);
+                sectionContentDiv.appendChild(container2);
+
+                // Statistical description.
+                // var container3 = document.createElement("div");
+                // container3.classList.add("section-container");
+                // container3.classList.add("text");
+                // // container3.classList.add("desktop");
+                // var statsDescriptionDiv = document.createElement("div");
+                // statsDescriptionDiv.innerHTML =
+                //     "<span class=\"inline-stat\">~" + cityData.cityJobsInManufPerc + "%</span> " +
+                //     "of the jobs in " + cityData.title + " are in manufacturing.  " +
+                //     "These <span class=\"inline-stat\">" + cityData.natlUnitVolRank.toLocaleString() + "</span> jobs represent roughly " + 
+                //     "<span class=\"inline-stat\">"+ cityData.percOfAllIlManufJobs + "%</span>" +
+                //     " of the IL manufacturing workforce.";
+                // container3.appendChild(statsDescriptionDiv);
+                // sectionContentDiv.appendChild(container3);
+
+                // // Mayor quote.
+                // var container4 = document.createElement("div");
+                // container4.classList.add("section-container");
+                // container4.classList.add("text");
+                // container4.classList.add("centered");
+                // container4.classList.add("desktop");
+                // var mayorQuoteDiv = document.createElement("blockquote");
+                // mayorQuoteDiv.innerHTML = cityData.mayorQuote;
+                // container4.appendChild(mayorQuoteDiv);
+                // sectionContentDiv.appendChild(container4);
+
+                // Top segments div.
+                var container5 = document.createElement("div");
+                container5.id = "container5";
+                container5.classList.add("section-container");
+                container5.classList.add("stats");
+                var topSegmentsDiv = document.createElement("div");
+                var topSegmentsTitleDiv = document.createElement("div");             
+                topSegmentsTitleDiv.innerHTML = "Rolling 12 Month Unit Growth By Product Type:";            
+                topSegmentsDiv.appendChild(topSegmentsTitleDiv);
+                var topSegmentsUl = document.createElement("ul");
+                for (var j = 0; j < cityData.topSegments.length; j++) {
+                    var segmentDiv = document.createElement("li");
+                    var segmentKeyDiv = document.createElement("span");
+                    segmentKeyDiv.innerHTML = cityData.topSegments[j].segment + ":";
+                    var segmentValDiv = document.createElement("span");
+                    segmentValDiv.classList.add("stat");
+                    segmentValDiv.innerHTML = 
+                        cityData.topSegments[j].ytdGrowth >= 0.0 ?
+                        "+" + cityData.topSegments[j].ytdGrowth.toFixed(1) + "%" :
+                        cityData.topSegments[j].ytdGrowth.toFixed(1) + "%" ;
+                    segmentDiv.appendChild(segmentKeyDiv);
+                    segmentDiv.appendChild(segmentValDiv);
+                    topSegmentsUl.appendChild(segmentDiv);
+                };
+                topSegmentsDiv.appendChild(topSegmentsUl);
+                container5.appendChild(topSegmentsDiv);
+                sectionContentDiv.appendChild(container5);
+
+                // Add section to features.
+                section.appendChild(sectionContentDiv);
+                parentDiv.appendChild(section);
+                parentDiv.appendChild(document.createElement("hr"));
+            }
+
+            // Function that build the about me.
+            function appendAboutme(parentDiv) {
+                // Build the about me.
+                var section = document.createElement("section");
+                section.id = "About";
+                section.classList.add("nontitle");
+
+                // Title.
+                var titleDiv = document.createElement("div");
+                titleDiv.classList.add("card-title");
+                titleDiv.innerHTML = cities['About'].data.title;
+                section.appendChild(titleDiv);
+
+                var description = document.createElement("div");
+                description.classList.add("section-container");
+                description.classList.add("text");
+                section.appendChild(description);
+                description.innerHTML =
+                    media === "mobile" ? 
+                        cities['About'].data.descriptionMobile:
+                        cities['About'].data.description;
+
+                parentDiv.append(section);
+            };
+
+            // Build the cards if desktop.
+            if (media === "desktop") {
+                // Iterate through sorted cities.
+                for (var i = 0; i < sortedCities.length; i++) {
+                    // Data for the city.
+                    var cityData = cities[sortedCities[i]].data;
+                    // Build a card.
+                    appendCard(featuresDiv, cityData);
+                };
+
+                // Append about me.
+                appendAboutme(featuresDiv);
+            };
+
+            // Make a dataset for pins.
+            var pinsData = (function (sortedCities) {
+                var dataset = {
+                    type: "FeatureCollection",
+                    features: [],
+                };
+                for (var i = 0; i < sortedCities.length; i++ ) {
+                    dataset.features.push({
+                        type: "Feature",
+                        geometry: { 
+                            type: "Point",
+                            coordinates: cities[sortedCities[i]].camera.center
+                        },
+                        properties: {
+                            name: cities[sortedCities[i]].data.title
+                        },
+                    });
+                };
+                return dataset;
+            })(sortedCities);
+
+            // Initialize the app.
+            var chapterNames =          Object.keys(cities);
+            var activeChapterName =     chapterNames[0];
+            var activeChapterIdx =      0;
+            var firstChapter =          chapterNames[0];
+            var lastChapter =           chapterNames[chapterNames.length-1];
+            var cityPolygonLayerName =  "cb-2018-17-place-500k-il-3b21gj";
+            var pinURL =                "https://i.imgur.com/58QOLG7.png";
+            var nextBtn =               document.querySelector("#nextbutton");
+            var backBtn =               document.querySelector("#backbutton");
+            var key =                   document.querySelector("#key");
+
+            // Checks for the current card.
+            function isElementOnScreen(id) {
+                var element =   document.getElementById(id);
+                var bounds =    element.getBoundingClientRect();
+                return bounds.top < window.innerHeight && bounds.bottom > 0;
+            };
+
+            // Changes the camera for the active card.
+            function setActiveChapter(chapterName) {
+                // Do nothing the card has not changed.
+                if (chapterName === activeChapterName) { return };
+
+                // Update the dom for mobile.
+                if (media === "mobile") {
+                    // Empty out div.
+                    var prevSection = document.querySelector(".nontitle");
+                    if (prevSection) { prevSection.parentNode.removeChild(prevSection) };
+
+                    //Append new data.
+                    if (chapterName === "USA") {
+                        titleDiv.style.display = "block";
+                        key.style.display = "none";
+                    } else if (chapterName === "About") {
+                        // Add about me.
+                        key.style.display = "none";
+                        appendAboutme(featuresDiv);
+                    } else {
+                        titleDiv.style.display = "none";
+                        key.style.display = "block";
+                        appendCard(featuresDiv, cities[chapterName].data);
+                    };
+                };
+
+                // Activeate/deactive buttons.
+                nextBtn.disabled = activeChapterIdx === chapterNames.length - 1 ? true : false;
+                backBtn.disabled = activeChapterIdx === 0 ? true : false;
+
+                // Line opactiy.
+                var lineOpacity = 0;
+                var posDirection = true;
+                var rate = 1;
+
+                // Remove individual city filter for the first (intro) card.
+                if (chapterName === firstChapter || chapterName === lastChapter) {
+                    map.setLayoutProperty(lineLayer, 'visibility', 'none');
+                    map.setFilter(cityPolygonLayerName, ["in", "NAME"].concat(chapterNames));
+                    clearInterval(interval);
+                }
+                // Otherwise, filter the layer based on the chapterName.
+                else {
+                    map.setLayoutProperty(lineLayer, 'visibility', 'visible');
+                    map.setFilter(lineLayer, ["==", ["get", "CBSAFP"], cities[chapterName].data.CBSA.toString()]);
+                    map.setPaintProperty(lineLayer, 'line-opacity', 1);
+                    clearInterval(interval);
+                    interval = setInterval(function() {
+                        if (lineOpacity === 1) {
+                            posDirection = false;
+                            lineOpacity = 1 - (1/30*rate);
+                        } else if (lineOpacity === 0) {
+                            posDirection = true;
+                            lineOpacity = (1/30*rate);
+                        } else if (posDirection) {
+                            lineOpacity = Math.min(1, lineOpacity += (1/30*rate))
+                        } else {
+                            lineOpacity = Math.max(0, lineOpacity - (1/30*rate))
+                        }
+                        
+                        map.setPaintProperty(lineLayer, 'line-opacity', lineOpacity);
+                        
+                    }, 30);
+                };
+
+                // Fly to the chapter's camera settings.
+                if (media === "mobile") {
+                    // map.fitBounds(cities[chapterName].bounds);
+                    map.flyTo({
+                        ...cities[chapterName].camera,
+                        zoom: cities[chapterName].camera.zoom -1
+                    });
+                } else {
+                    map.flyTo(cities[chapterName].camera);
+                };
+
+                // Turn on CSS styling for active card.
+                document.getElementById(chapterName).classList.add("active");
+                var prevChapterDiv = document.getElementById(activeChapterName);
+                if (prevChapterDiv) { prevChapterDiv.classList.remove("active") };
+                
+                // Set the active chapter.
+                activeChapterName = chapterName;
+            };
+
+            // Wait for the map to load...
+            map.on("load", function () {
+                // Init style.
+                map.setFilter(lineLayer, ["==", ["get", "CBSAFP"], "26900"])
+                map.setLayoutProperty(lineLayer, 'visibility', 'none');
+                map.setPaintProperty(lineLayer, 'line-color', "#155068");
+                map.setPaintProperty(lineLayer, 'line-width', 5);
+                map.setLayerZoomRange("settlement-minor-label", 5,15)
+                
+                var scale = new mapboxgl.ScaleControl({
+                maxWidth: 80,
+                unit: 'imperial'
+                });
+                map.addControl(scale);
+                // Fly to tighter bounds.
+                map.fitBounds([[-126.960, 24.394],[-65.117, 50.034]]);
+
+                // Add the pins source and layer.
+                map.loadImage(
+                    pinURL,
+                    function(error, image) {
+                        // Error handler.
+                        if (error) { throw error };
+
+                        // // Add image to map.
+                        // map.addImage("pin", image);
+
+                        // // Add symbols source.
+                        // map.addSource("pins", {
+                        //     type: "geojson",
+                        //     data: pinsData
+                        // });
+
+                        // // Add layer.
+                        // map.addLayer({
+                        //     id: "pins-layer",
+                        //     type: "symbol",
+                        //     source: "pins",
+                        //     layout: {
+                        //                 "icon-allow-overlap":   true,
+                        //                 "icon-anchor":          "bottom",
+                        //                 "icon-image":           "pin",
+                        //                 "icon-padding":         0,
+                        //                 "icon-size":            0.085,
+                        //                 "visibility":           "visible",
+                        //             },
+                        //     paint: { "icon-opacity": 0.9 }
+                        // })
+                    }
+                );
+
+                // Turn on the next button.
+                nextBtn.disabled = false;
+
+                // For desktop, put the scroll listener on.
+                if (media === "desktop") {
+                    // Listener for the scroll event.
+                    window.onscroll = function() {
+                        // Iterate through the chapter names.
+                        for (var i = 0; i < chapterNames.length; i++) {
+                            // Check for the current card.
+                            if (isElementOnScreen(chapterNames[i])) {
+                                // Update the current card and break.
+                                setActiveChapter(chapterNames[i]);
+                                break;
+                            };
+                        };
+                    };
+                } else {
+                    nextBtn.addEventListener("click" , function() {
+                        activeChapterIdx = Math.min(chapterNames.length - 1, activeChapterIdx + 1);
+                        setActiveChapter(chapterNames[activeChapterIdx]); 
+                    });
+
+                    backBtn.addEventListener("click" , function() {
+                        activeChapterIdx = Math.max(0, activeChapterIdx - 1);
+                        setActiveChapter(chapterNames[activeChapterIdx]); 
+                    });
+                }
+            });
+
+        </script>
+
+    </body>
+</html>
+
+
